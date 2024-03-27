@@ -1,0 +1,80 @@
+[gd_scene load_steps=17 format=3 uid="uid://t62l5x0on3b5"]
+
+[ext_resource type="Script" path="res://src/battle.gd" id="1_0f3iq"]
+[ext_resource type="Texture2D" uid="uid://dv4ofkslnphax" path="res://sprites/Head.png" id="1_5nhu5"]
+[ext_resource type="Texture2D" uid="uid://c0nsaea44doh5" path="res://sprites/HornLeftBack.png" id="2_lm1d3"]
+[ext_resource type="Texture2D" uid="uid://b6v40eceo4jy3" path="res://sprites/HornLeftMiddle.png" id="3_mr8hu"]
+[ext_resource type="Texture2D" uid="uid://bfx60rimqg3sa" path="res://sprites/Halo1LeftBack.png" id="3_r7m81"]
+[ext_resource type="Texture2D" uid="uid://ckus1ulea2xsg" path="res://sprites/HornLeftFront.png" id="4_2a2qo"]
+[ext_resource type="Texture2D" uid="uid://bes650t0ol3tx" path="res://sprites/Halo2LeftBack.png" id="4_60uad"]
+[ext_resource type="Texture2D" uid="uid://d038ux7ec8ccx" path="res://sprites/Halo1LeftFront.png" id="7_kev2s"]
+[ext_resource type="Texture2D" uid="uid://dijjkeo6jrogv" path="res://sprites/HornRightBack.png" id="8_ladwh"]
+[ext_resource type="Texture2D" uid="uid://c30na7x3kovyj" path="res://sprites/Halo2LeftFront.png" id="9_mden6"]
+[ext_resource type="Texture2D" uid="uid://y0hayihhj3db" path="res://sprites/HornRightMiddle.png" id="9_v187l"]
+[ext_resource type="Texture2D" uid="uid://0nmh5l5g3n7d" path="res://sprites/Halo1RightBack.png" id="10_02rht"]
+[ext_resource type="Texture2D" uid="uid://bg5sl1a3fvq6m" path="res://sprites/HornRightFront.png" id="10_fb04b"]
+[ext_resource type="Texture2D" uid="uid://b1ddh7mrwbiht" path="res://sprites/Halo2RightBack.png" id="11_qr8wt"]
+[ext_resource type="Texture2D" uid="uid://c5ctrmg2edqoq" path="res://sprites/Halo1RightFront.png" id="15_tt1mw"]
+[ext_resource type="Texture2D" uid="uid://d1t56cv6e3okj" path="res://sprites/Halo2RightFront.png" id="16_d4tx0"]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_0f3iq")
+
+[node name="Enemy" type="Node2D" parent="."]
+position = Vector2(748, 937)
+metadata/_edit_group_ = true
+
+[node name="Head" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("1_5nhu5")
+
+[node name="Halo1LeftBack" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("3_r7m81")
+
+[node name="Halo2LeftBack" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("4_60uad")
+
+[node name="HornLeftBack" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("2_lm1d3")
+
+[node name="HornLeftMiddle" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("3_mr8hu")
+
+[node name="HornLeftFront" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("4_2a2qo")
+
+[node name="Halo1LeftFront" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("7_kev2s")
+
+[node name="Halo2LeftFront" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("9_mden6")
+
+[node name="Halo1RightBack" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("10_02rht")
+
+[node name="Halo2RightBack" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("11_qr8wt")
+
+[node name="HornRightBack" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("8_ladwh")
+
+[node name="HornRightMiddle" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("9_v187l")
+
+[node name="HornRightFront" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("10_fb04b")
+
+[node name="Halo1RightFront" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("15_tt1mw")
+
+[node name="Halo2RightFront" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("16_d4tx0")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1270.0
+offset_top = 1271.0
+offset_right = 1470.0
+offset_bottom = 1471.0
+theme_override_font_sizes/font_size = 40
+text = "BUTTON"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
