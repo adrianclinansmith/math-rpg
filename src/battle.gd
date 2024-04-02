@@ -16,30 +16,35 @@ func _process(delta: float) -> void:
 	for digit in 10:
 		if Input.is_action_just_pressed(str("ui_", digit)):
 			attack = attack * 10 + digit
+			$AttackButton.text = str(attack)
 			print(attack)
 	# decrease attack power
 	if Input.is_action_just_pressed("ui_text_backspace"):
 		attack /= 10
+		$AttackButton.text = str(attack)
 		print(attack)
 	# fire attack 
 	if Input.is_action_just_pressed("ui_text_completion_accept"):
-		_on_button_pressed()
+		_on_attack_button_pressed()
 	
 # Signal Handlers
 # =========================================================
 
-func _on_button_pressed() -> void:
-	var hit_left := attack % left_horn_value == 0
-	var hit_right := attack % right_horn_value == 0
+func _on_attack_button_pressed() -> void:
+	var hit_left := attack % left_horn_value == 0 and attack != 0
+	var hit_right := attack % right_horn_value == 0  and attack != 0
 	if hit_left:
 		print("HIT: %d divides %d" % [left_horn_value, attack])
 	if hit_right:
 		print("HIT: %d divides %d" % [right_horn_value, attack])
 	if hit_left or hit_right:
 		randomly_change_horns()
+	elif attack == 0:
+		print("You do nothing!")
 	else:
-		print("MISS!")
+		print("You MISS!")
 	attack = 0
+	$AttackButton.text = str(attack)
 	
 # Private Functions 
 # =========================================================
@@ -84,4 +89,3 @@ func show_horns(side_of_head: String, value: int) -> void:
 		back_horn.show()
 		middle_horn.show()
 		front_horn.show()
-

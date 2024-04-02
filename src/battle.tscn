@@ -21,7 +21,7 @@
 script = ExtResource("1_0f3iq")
 
 [node name="Enemy" type="Node2D" parent="."]
-position = Vector2(748, 937)
+position = Vector2(748, 835)
 metadata/_edit_group_ = true
 
 [node name="Head" type="Sprite2D" parent="Enemy"]
@@ -69,12 +69,12 @@ texture = ExtResource("15_tt1mw")
 [node name="Halo2RightFront" type="Sprite2D" parent="Enemy"]
 texture = ExtResource("16_d4tx0")
 
-[node name="Button" type="Button" parent="."]
+[node name="AttackButton" type="Button" parent="."]
 offset_left = 1270.0
-offset_top = 1271.0
+offset_top = 1270.0
 offset_right = 1470.0
-offset_bottom = 1471.0
+offset_bottom = 1420.0
 theme_override_font_sizes/font_size = 40
-text = "BUTTON"
+text = "0"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="AttackButton" to="." method="_on_attack_button_pressed"]
