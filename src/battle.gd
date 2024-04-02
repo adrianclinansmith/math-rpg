@@ -1,19 +1,19 @@
 extends Node2D
 
-enum Logical_Operator {AND, OR}
+enum Logical_Op {AND, OR, XOR}
 
 var rng := RandomNumberGenerator.new()
 var attack := 0
 var left_horn_value := 0
 var right_horn_value := 0
-var logic_value := Logical_Operator.OR
+var logic_value := Logical_Op.OR
 
 # Node Overrides
 # =========================================================
 
 func _ready() -> void:
 	randomly_change_horns()
-	change_logic_operator(Logical_Operator.OR)
+	change_logic_operator(Logical_Op.OR)
 	
 func _process(delta: float) -> void:
 	# increase attack power
@@ -21,41 +21,40 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed(str("ui_", digit)):
 			attack = attack * 10 + digit
 			$AttackButton.text = str(attack)
-			print(attack)
 	# decrease attack power
 	if Input.is_action_just_pressed("ui_text_backspace"):
 		attack /= 10
 		$AttackButton.text = str(attack)
-		print(attack)
 	# launch attack 
 	if Input.is_action_just_pressed("ui_text_completion_accept"):
 		_on_attack_button_pressed()
-	# change logical operator
+	# change enemy's logical operator
 	if Input.is_action_just_pressed("ui_select"):
-		change_logic_operator((logic_value + 1) % 2)
+		change_logic_operator((logic_value + 1) % Logical_Op.size())
 	
 # Signal Handlers
 # =========================================================
 
 func _on_attack_button_pressed() -> void:
-	var hit_left := attack % left_horn_value == 0 and attack != 0
-	var hit_right := attack % right_horn_value == 0  and attack != 0
+	if attack == 0:
+		print("You do nothing!\n")
+		return
+	var hit_left := attack % left_horn_value == 0
+	var hit_right := attack % right_horn_value == 0
 	if hit_left:
 		print("left: %d|%d" % [left_horn_value, attack])
 	if hit_right:
 		print("right: %d|%d" % [right_horn_value, attack])
 	var attack_hits: bool
-	if logic_value == Logical_Operator.OR:
-		attack_hits = hit_left or hit_right
-	else:
-		attack_hits = hit_left and hit_right
+	match logic_value:
+		Logical_Op.AND: attack_hits = hit_left and hit_right
+		Logical_Op.OR:  attack_hits = hit_left or hit_right
+		Logical_Op.XOR: attack_hits = hit_left != hit_right
 	if attack_hits:
-		print("Your attack hits!")
+		print("Your attack hits!\n")
 		randomly_change_horns()
-	elif attack == 0:
-		print("You do nothing!")
 	else:
-		print("You MISS!")
+		print("You MISS!\n")
 	attack = 0
 	$AttackButton.text = str(attack)
 	
@@ -103,12 +102,12 @@ func show_horns(side_of_head: String, value: int) -> void:
 		middle_horn.show()
 		front_horn.show()
 		
-func change_logic_operator(op: Logical_Operator) -> void:
+func change_logic_operator(op: Logical_Op) -> void:
 	logic_value = op
-	if op == Logical_Operator.OR:
-		$Enemy/LogicalAND.hide()
-		$Enemy/LogicalOR.show()
-	else:
-		$Enemy/LogicalAND.show()
-		$Enemy/LogicalOR.hide()
-		
+	$Enemy/LogicalAND.hide()
+	$Enemy/LogicalOR.hide()
+	$Enemy/LogicalXOR.hide()
+	match op:
+		Logical_Op.AND: $Enemy/LogicalAND.show()
+		Logical_Op.OR:  $Enemy/LogicalOR.show()
+		Logical_Op.XOR: $Enemy/LogicalXOR.show()
