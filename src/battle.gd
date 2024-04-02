@@ -1,15 +1,19 @@
 extends Node2D
 
+enum Logical_Operator {AND, OR}
+
 var rng := RandomNumberGenerator.new()
 var attack := 0
 var left_horn_value := 0
 var right_horn_value := 0
+var logic_value := Logical_Operator.OR
 
 # Node Overrides
 # =========================================================
 
 func _ready() -> void:
 	randomly_change_horns()
+	change_logic_operator(Logical_Operator.OR)
 	
 func _process(delta: float) -> void:
 	# increase attack power
@@ -23,9 +27,12 @@ func _process(delta: float) -> void:
 		attack /= 10
 		$AttackButton.text = str(attack)
 		print(attack)
-	# fire attack 
+	# launch attack 
 	if Input.is_action_just_pressed("ui_text_completion_accept"):
 		_on_attack_button_pressed()
+	# change logical operator
+	if Input.is_action_just_pressed("ui_select"):
+		change_logic_operator((logic_value + 1) % 2)
 	
 # Signal Handlers
 # =========================================================
@@ -34,10 +41,16 @@ func _on_attack_button_pressed() -> void:
 	var hit_left := attack % left_horn_value == 0 and attack != 0
 	var hit_right := attack % right_horn_value == 0  and attack != 0
 	if hit_left:
-		print("HIT: %d divides %d" % [left_horn_value, attack])
+		print("left: %d|%d" % [left_horn_value, attack])
 	if hit_right:
-		print("HIT: %d divides %d" % [right_horn_value, attack])
-	if hit_left or hit_right:
+		print("right: %d|%d" % [right_horn_value, attack])
+	var attack_hits: bool
+	if logic_value == Logical_Operator.OR:
+		attack_hits = hit_left or hit_right
+	else:
+		attack_hits = hit_left and hit_right
+	if attack_hits:
+		print("Your attack hits!")
 		randomly_change_horns()
 	elif attack == 0:
 		print("You do nothing!")
@@ -46,7 +59,7 @@ func _on_attack_button_pressed() -> void:
 	attack = 0
 	$AttackButton.text = str(attack)
 	
-# Private Functions 
+# Private Helper Functions 
 # =========================================================
 
 func randomly_change_horns() -> void:
@@ -89,3 +102,13 @@ func show_horns(side_of_head: String, value: int) -> void:
 		back_horn.show()
 		middle_horn.show()
 		front_horn.show()
+		
+func change_logic_operator(op: Logical_Operator) -> void:
+	logic_value = op
+	if op == Logical_Operator.OR:
+		$Enemy/LogicalAND.hide()
+		$Enemy/LogicalOR.show()
+	else:
+		$Enemy/LogicalAND.show()
+		$Enemy/LogicalOR.hide()
+		
