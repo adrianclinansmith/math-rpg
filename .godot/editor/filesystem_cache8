@@ -1,7 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1712083269
+::res://::1712111788
 icon.svg::CompressedTexture2D::932227506977939124::1711293026::1711293035::1::::<><>::
-::res://sprites/::1712084622
+::res://sprites/::1712084631
 AND.png::CompressedTexture2D::3312076957794178722::1712078782::1712078783::1::::<><>::
 Halo1LeftBack.png::CompressedTexture2D::2786773367672283652::1711294856::1711405019::1::::<><>::
 Halo1LeftFront.png::CompressedTexture2D::8973826353439686155::1711294856::1711405031::1::::<><>::
@@ -20,6 +20,8 @@ HornRightFront.png::CompressedTexture2D::2870598994632661090::1711402188::171140
 HornRightMiddle.png::CompressedTexture2D::1736567983360264175::1711402194::1711402428::1::::<><>::
 OR.png::CompressedTexture2D::4017944884223969982::1712078772::1712078774::1::::<><>::
 XOR.png::CompressedTexture2D::8195509327911264449::1712084622::1712084623::1::::<><>::
-::res://src/::1712083269
-battle.gd::GDScript::-1::1712083262::0::1::::<>Node2D<>::
-battle.tscn::PackedScene::1399244354422260312::1712083262::0::1::::<><>::res://src/battle.gd<>uid://dv4ofkslnphax::::res://sprites/Head.png<>uid://c0nsaea44doh5::::res://sprites/HornLeftBack.png<>uid://b6v40eceo4jy3::::res://sprites/HornLeftMiddle.png<>uid://bfx60rimqg3sa::::res://sprites/Halo1LeftBack.png<>uid://bxik7211kyyne::::res://sprites/OR.png<>uid://ckus1ulea2xsg::::res://sprites/HornLeftFront.png<>uid://bes650t0ol3tx::::res://sprites/Halo2LeftBack.png<>uid://bngnonw7n3ivi::::res://sprites/AND.png<>uid://d038ux7ec8ccx::::res://sprites/Halo1LeftFront.png<>uid://dijjkeo6jrogv::::res://sprites/HornRightBack.png<>uid://c30na7x3kovyj::::res://sprites/Halo2LeftFront.png<>uid://y0hayihhj3db::::res://sprites/HornRightMiddle.png<>uid://0nmh5l5g3n7d::::res://sprites/Halo1RightBack.png<>uid://bg5sl1a3fvq6m::::res://sprites/HornRightFront.png<>uid://b1ddh7mrwbiht::::res://sprites/Halo2RightBack.png<>uid://c5ctrmg2edqoq::::res://sprites/Halo1RightFront.png<>uid://d1t56cv6e3okj::::res://sprites/Halo2RightFront.png
+::res://src/::1712111044
+battle.gd::GDScript::-1::1712110533::0::1::::<>Node2D<>::
+battle.tscn::PackedScene::1399244354422260312::1712111746::0::1::::<><>::res://src/battle.gd<>uid://ckl7nn55eok5r::::res://src/enemy.tscn
+enemy.gd::GDScript::-1::1712111034::0::1::::Enemy<>Node2D<>::
+enemy.tscn::PackedScene::5499404848667129253::1712111743::0::1::::<><>::res://src/enemy.gd<>uid://dv4ofkslnphax::::res://sprites/Head.png<>uid://bxik7211kyyne::::res://sprites/OR.png<>uid://bngnonw7n3ivi::::res://sprites/AND.png<>uid://do073uqtciny4::::res://sprites/XOR.png<>uid://bfx60rimqg3sa::::res://sprites/Halo1LeftBack.png<>uid://bes650t0ol3tx::::res://sprites/Halo2LeftBack.png<>uid://c0nsaea44doh5::::res://sprites/HornLeftBack.png<>uid://b6v40eceo4jy3::::res://sprites/HornLeftMiddle.png<>uid://ckus1ulea2xsg::::res://sprites/HornLeftFront.png<>uid://d038ux7ec8ccx::::res://sprites/Halo1LeftFront.png<>uid://c30na7x3kovyj::::res://sprites/Halo2LeftFront.png<>uid://0nmh5l5g3n7d::::res://sprites/Halo1RightBack.png<>uid://b1ddh7mrwbiht::::res://sprites/Halo2RightBack.png<>uid://dijjkeo6jrogv::::res://sprites/HornRightBack.png<>uid://y0hayihhj3db::::res://sprites/HornRightMiddle.png<>uid://bg5sl1a3fvq6m::::res://sprites/HornRightFront.png<>uid://c5ctrmg2edqoq::::res://sprites/Halo1RightFront.png<>uid://d1t56cv6e3okj::::res://sprites/Halo2RightFront.png
