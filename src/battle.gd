@@ -1,8 +1,11 @@
 extends Node2D
 
-@onready var enemy: Enemy = $Enemy
+const MAX_HEALTH = 200
 
 var attack := 0
+var health = MAX_HEALTH
+
+@onready var enemy: Enemy = $Enemy
 
 # Node Overrides
 # =========================================================
@@ -32,6 +35,7 @@ func _process(delta: float) -> void:
 # =========================================================
 
 func _on_attack_button_pressed() -> void:
+	receive_attack(enemy.ATTACK)
 	enemy.receive_attack(attack)
 	attack = 0
 	$AttackButton.text = str(attack)
@@ -39,3 +43,9 @@ func _on_attack_button_pressed() -> void:
 # Private Helper Functions 
 # =========================================================
 
+func receive_attack(attack: int) -> void:
+	print("The enemy attacks!")
+	health -= attack
+	print("Your health: %d/%d" % [health, MAX_HEALTH])
+	if health <= 0:
+		print("You've been defeated!\n")

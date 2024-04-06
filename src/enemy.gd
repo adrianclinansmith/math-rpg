@@ -3,18 +3,70 @@ extends Node2D
 
 enum LogicalOp {AND, OR, XOR}
 
-var rng := RandomNumberGenerator.new()
-var left_horn_value: int
-var right_horn_value: int
-var logical_connection := LogicalOp.OR
+const ATTACK := 30
+const __MAX_HEALTH := 200
 
-func show_horns(side_of_head: String, value: int) -> void:
+var __rng := RandomNumberGenerator.new()
+var __left_horn_value: int
+var __right_horn_value: int
+var __logical_connection := LogicalOp.OR
+var __health := __MAX_HEALTH
+
+# Public Methods
+# ==============================================================================
+
+func change_logic_operator() -> void:
+	__logical_connection = (__logical_connection + 1) % LogicalOp.size()
+	$LogicalAND.hide()
+	$LogicalOR.hide()
+	$LogicalXOR.hide()
+	match __logical_connection:
+		LogicalOp.AND: $LogicalAND.show()
+		LogicalOp.OR:  $LogicalOR.show()
+		LogicalOp.XOR: $LogicalXOR.show()
+		
+func randomly_change_horns() -> void:
+	__change_horns("Left", __rng.randi_range(1, 15))
+	__change_horns("Right", __rng.randi_range(1, 15))
+	print()
+	
+func receive_attack(attack: int) -> void:
+	if attack == 0:
+		print("You do nothing!\n")
+		return
+	var hit_left := attack % __left_horn_value == 0
+	var hit_right := attack % __right_horn_value == 0
+	if hit_left:
+		print("left: %d|%d" % [__left_horn_value, attack])
+	if hit_right:
+		print("right: %d|%d" % [__right_horn_value, attack])
+	var got_hit: bool
+	match __logical_connection:
+		LogicalOp.AND: got_hit = hit_left and hit_right
+		LogicalOp.OR:  got_hit = hit_left or hit_right
+		LogicalOp.XOR: got_hit = hit_left != hit_right
+	if got_hit:
+		__health -= attack
+		print("Your attack hits!")
+		print("enemy health: %d/%d" % [__health, __MAX_HEALTH])
+		randomly_change_horns()
+	else:
+		print("You MISS!\n")
+	if __health <= 0:
+		print("The enemy is defeated!\n")
+		__health = __MAX_HEALTH
+		
+		
+# Private Methods
+# ==============================================================================
+
+func __change_horns(side_of_head: String, value: int) -> void:
 	print("%s value = %d" % [side_of_head, value])
 	# Store the numeric value of the horns 
 	if side_of_head == "Left":
-		left_horn_value = value
+		__left_horn_value = value
 	else:
-		right_horn_value = value
+		__right_horn_value = value
 	# initially hide all horns and halos
 	for i in range(1, get_child_count()):
 		if get_child(i).name.contains(side_of_head):
@@ -45,37 +97,3 @@ func show_horns(side_of_head: String, value: int) -> void:
 		middle_horn.show()
 		front_horn.show()
 
-func change_logic_operator() -> void:
-	logical_connection = (logical_connection + 1) % LogicalOp.size()
-	$LogicalAND.hide()
-	$LogicalOR.hide()
-	$LogicalXOR.hide()
-	match logical_connection:
-		LogicalOp.AND: $LogicalAND.show()
-		LogicalOp.OR:  $LogicalOR.show()
-		LogicalOp.XOR: $LogicalXOR.show()
-		
-func randomly_change_horns() -> void:
-	show_horns("Left", rng.randi_range(1, 15))
-	show_horns("Right", rng.randi_range(1, 15))
-	
-func receive_attack(attack: int) -> void:
-	if attack == 0:
-		print("You do nothing!\n")
-		return
-	var hit_left := attack % left_horn_value == 0
-	var hit_right := attack % right_horn_value == 0
-	if hit_left:
-		print("left: %d|%d" % [left_horn_value, attack])
-	if hit_right:
-		print("right: %d|%d" % [right_horn_value, attack])
-	var got_hit: bool
-	match logical_connection:
-		LogicalOp.AND: got_hit = hit_left and hit_right
-		LogicalOp.OR:  got_hit = hit_left or hit_right
-		LogicalOp.XOR: got_hit = hit_left != hit_right
-	if got_hit:
-		print("Your attack hits!\n")
-		randomly_change_horns()
-	else:
-		print("You MISS!\n")
