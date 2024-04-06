@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmuvsb2hygscq"]
+
+[ext_resource type="Script" path="res://src/hp_bar.gd" id="1_dv14w"]
+
+[node name="HpBar" type="ProgressBar"]
+offset_left = 26.0
+offset_top = 1299.0
+offset_right = 526.0
+offset_bottom = 1369.0
+theme_override_font_sizes/font_size = 40
+value = 30.0
+show_percentage = false
+script = ExtResource("1_dv14w")
+metadata/_edit_group_ = true
+
+[node name="FractionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_right = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "50 / 200"
+vertical_alignment = 1

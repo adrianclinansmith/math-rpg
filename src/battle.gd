@@ -2,15 +2,20 @@ extends Node2D
 
 const MAX_HEALTH = 200
 
-var attack := 0
-var health = MAX_HEALTH
-
 @onready var enemy: Enemy = $Enemy
+@onready var player_hp_bar: HpBar = $PlayerHealthBar
 
+var attack := 0
+var health := MAX_HEALTH: 
+	set(new_health):
+		health = clamp(new_health, 0, MAX_HEALTH)
+		player_hp_bar.set_hp(health, MAX_HEALTH)
+	
 # Node Overrides
 # =========================================================
 
 func _ready() -> void:
+	player_hp_bar.set_hp(health, MAX_HEALTH)
 	enemy.randomly_change_horns()
 	enemy.change_logic_operator()
 	

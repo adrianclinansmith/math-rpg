@@ -1,2 +1,7 @@
 res://src/battle.tscn
+res://src/battle.gd
 res://src/enemy.tscn
+res://src/health_bar.tscn
+res://src/health_bar.gd
+res://src/hp_bar.tscn
+res://src/hp_bar.gd
