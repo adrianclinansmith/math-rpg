@@ -4,13 +4,18 @@ extends Node2D
 enum LogicalOp {AND, OR, XOR}
 
 const ATTACK := 30
-const __MAX_HEALTH := 200
+const __MAX_HP := 200
+
+var hp_bar: HpBar = null
 
 var __rng := RandomNumberGenerator.new()
 var __left_horn_value: int
 var __right_horn_value: int
 var __logical_connection := LogicalOp.OR
-var __health := __MAX_HEALTH
+var __hp := __MAX_HP:
+	set(new_hp):
+		__hp = clamp(new_hp, 0, __MAX_HP)
+		hp_bar.set_hp(__hp)
 
 # Public Methods
 # ==============================================================================
@@ -46,17 +51,19 @@ func receive_attack(attack: int) -> void:
 		LogicalOp.OR:  got_hit = hit_left or hit_right
 		LogicalOp.XOR: got_hit = hit_left != hit_right
 	if got_hit:
-		__health -= attack
+		__hp -= attack
 		print("Your attack hits!")
-		print("enemy health: %d/%d" % [__health, __MAX_HEALTH])
 		randomly_change_horns()
 	else:
 		print("You MISS!\n")
-	if __health <= 0:
+	if __hp <= 0:
 		print("The enemy is defeated!\n")
-		__health = __MAX_HEALTH
-		
-		
+		__hp = __MAX_HP
+
+func set_hp_bar(_hp_bar: HpBar) -> void:
+	hp_bar = _hp_bar
+	hp_bar.setup(__MAX_HP, __hp)
+
 # Private Methods
 # ==============================================================================
 

@@ -14,9 +14,20 @@ offset_left = 27.0
 offset_top = 1391.0
 offset_right = 229.0
 offset_bottom = 1482.0
+focus_mode = 0
 theme_override_font_sizes/font_size = 40
 text = "0"
 
 [node name="PlayerHealthBar" parent="." instance=ExtResource("3_a0rrd")]
+offset_left = 36.0
+offset_top = 1289.0
+offset_right = 536.0
+offset_bottom = 1359.0
+
+[node name="EnemyHealthBar" parent="." instance=ExtResource("3_a0rrd")]
+offset_left = 920.0
+offset_top = 1114.0
+offset_right = 1420.0
+offset_bottom = 1184.0
 
 [connection signal="pressed" from="AttackButton" to="." method="_on_attack_button_pressed"]

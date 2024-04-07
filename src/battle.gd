@@ -1,21 +1,23 @@
 extends Node2D
 
-const MAX_HEALTH = 200
+const MAX_HP = 199
 
 @onready var enemy: Enemy = $Enemy
 @onready var player_hp_bar: HpBar = $PlayerHealthBar
+@onready var enemy_hp_bar: HpBar = $EnemyHealthBar
 
 var attack := 0
-var health := MAX_HEALTH: 
-	set(new_health):
-		health = clamp(new_health, 0, MAX_HEALTH)
-		player_hp_bar.set_hp(health, MAX_HEALTH)
+var hp := MAX_HP:
+	set(new_hp):
+		hp = clamp(new_hp, 0, MAX_HP)
+		player_hp_bar.set_hp(hp)
 	
 # Node Overrides
 # =========================================================
 
 func _ready() -> void:
-	player_hp_bar.set_hp(health, MAX_HEALTH)
+	player_hp_bar.setup(MAX_HP, hp)
+	enemy.set_hp_bar(enemy_hp_bar)
 	enemy.randomly_change_horns()
 	enemy.change_logic_operator()
 	
@@ -50,7 +52,6 @@ func _on_attack_button_pressed() -> void:
 
 func receive_attack(attack: int) -> void:
 	print("The enemy attacks!")
-	health -= attack
-	print("Your health: %d/%d" % [health, MAX_HEALTH])
-	if health <= 0:
+	hp -= attack
+	if hp <= 0:
 		print("You've been defeated!\n")
