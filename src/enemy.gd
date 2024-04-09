@@ -35,10 +35,10 @@ func randomly_change_horns() -> void:
 	__change_horns("Right", __rng.randi_range(1, 15))
 	print()
 	
-func receive_attack(attack: int) -> void:
+func receive_attack(attack: int) -> bool:
 	if attack == 0:
 		print("You do nothing!\n")
-		return
+		return false
 	var hit_left := attack % __left_horn_value == 0
 	var hit_right := attack % __right_horn_value == 0
 	if hit_left:
@@ -56,13 +56,15 @@ func receive_attack(attack: int) -> void:
 		randomly_change_horns()
 	else:
 		print("You MISS!\n")
-	if __hp <= 0:
-		print("The enemy is defeated!\n")
-		__hp = __MAX_HP
+	return __hp <= 0
 
 func set_hp_bar(_hp_bar: HpBar) -> void:
 	hp_bar = _hp_bar
 	hp_bar.setup(__MAX_HP, __hp)
+	
+func reset() -> void:
+	__hp = __MAX_HP
+	randomly_change_horns()
 
 # Private Methods
 # ==============================================================================

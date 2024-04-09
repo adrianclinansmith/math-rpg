@@ -1,6 +1,7 @@
-HpBar
+Button
+Panel
 Label
+HpBar
 ProgressBar
 Sprite2D
-Button
 Node2D

@@ -5,6 +5,7 @@ const MAX_HP = 199
 @onready var enemy: Enemy = $Enemy
 @onready var player_hp_bar: HpBar = $PlayerHealthBar
 @onready var enemy_hp_bar: HpBar = $EnemyHealthBar
+@onready var end_game_display: Panel = $EndGameDisplay
 
 var attack := 0
 var hp := MAX_HP:
@@ -20,6 +21,7 @@ func _ready() -> void:
 	enemy.set_hp_bar(enemy_hp_bar)
 	enemy.randomly_change_horns()
 	enemy.change_logic_operator()
+	end_game_display.hide()
 	
 func _process(delta: float) -> void:
 	# increase attack power
@@ -42,16 +44,33 @@ func _process(delta: float) -> void:
 # =========================================================
 
 func _on_attack_button_pressed() -> void:
-	receive_attack(enemy.ATTACK)
-	enemy.receive_attack(attack)
+	var player_is_defeated = receive_attack(enemy.ATTACK)
+	if player_is_defeated:
+		display_end_game(false)
+	var enemy_is_defeated = enemy.receive_attack(attack)
 	attack = 0
 	$AttackButton.text = str(attack)
+	if enemy_is_defeated:
+		display_end_game(true)
 	
 # Private Helper Functions 
 # =========================================================
 
-func receive_attack(attack: int) -> void:
+func receive_attack(attack: int) -> bool:
 	print("The enemy attacks!")
 	hp -= attack
 	if hp <= 0:
 		print("You've been defeated!\n")
+	return hp <= 0
+
+func display_end_game(player_won: bool) -> void:
+	if player_won:
+		end_game_display.get_node("Label").text = "You win!"
+	else:
+		end_game_display.get_node("Label").text = "You're dead"
+	end_game_display.show()
+
+func _on_end_game_ok_pressed():
+	hp = MAX_HP
+	enemy.reset()
+	end_game_display.hide()

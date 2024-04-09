@@ -1,6 +1,5 @@
 res://src/battle.tscn
-res://src/battle.gd
 res://src/enemy.tscn
-res://src/hp_bar.tscn
-res://src/hp_bar.gd
 res://src/enemy.gd
+res://src/battle.gd
+res://src/hp_bar.tscn

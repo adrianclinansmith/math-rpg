@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://t62l5x0on3b5"]
+[gd_scene load_steps=6 format=3 uid="uid://t62l5x0on3b5"]
 
 [ext_resource type="Script" path="res://src/battle.gd" id="1_0f3iq"]
 [ext_resource type="PackedScene" uid="uid://ckl7nn55eok5r" path="res://src/enemy.tscn" id="2_1aitf"]
 [ext_resource type="PackedScene" uid="uid://cmuvsb2hygscq" path="res://src/hp_bar.tscn" id="3_a0rrd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1n8lp"]
+bg_color = Color(0.294118, 0.635294, 0.866667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8guad"]
+bg_color = Color(0, 0, 0.803922, 1)
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_0f3iq")
@@ -30,4 +36,40 @@ offset_top = 1114.0
 offset_right = 1420.0
 offset_bottom = 1184.0
 
+[node name="EndGameDisplay" type="Panel" parent="."]
+visible = false
+offset_left = -2.0
+offset_top = 454.0
+offset_right = 1501.0
+offset_bottom = 851.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1n8lp")
+
+[node name="Label" type="Label" parent="EndGameDisplay"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 137.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 100
+text = "Hello "
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="EndGameDisplay"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.0
+offset_top = -126.0
+offset_right = 98.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_8guad")
+text = "OK"
+
 [connection signal="pressed" from="AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="EndGameDisplay/Button" to="." method="_on_end_game_ok_pressed"]
