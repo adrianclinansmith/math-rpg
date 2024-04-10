@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ckl7nn55eok5r"]
+[gd_scene load_steps=31 format=3 uid="uid://ckl7nn55eok5r"]
 
 [ext_resource type="Script" path="res://src/enemy.gd" id="1_n2cwp"]
 [ext_resource type="Texture2D" uid="uid://dv4ofkslnphax" path="res://sprites/Head.png" id="1_y0k1h"]
@@ -11,17 +11,65 @@
 [ext_resource type="Texture2D" uid="uid://b6v40eceo4jy3" path="res://sprites/HornLeftMiddle.png" id="8_l5ekm"]
 [ext_resource type="Texture2D" uid="uid://ckus1ulea2xsg" path="res://sprites/HornLeftFront.png" id="9_iy3ro"]
 [ext_resource type="Texture2D" uid="uid://d038ux7ec8ccx" path="res://sprites/Halo1LeftFront.png" id="10_jqdbh"]
+[ext_resource type="Texture2D" uid="uid://jhx5odx30tsm" path="res://sprites/animation-frames/frame0000.png" id="10_x184x"]
 [ext_resource type="Texture2D" uid="uid://c30na7x3kovyj" path="res://sprites/Halo2LeftFront.png" id="11_ba4m8"]
+[ext_resource type="Texture2D" uid="uid://dov4iy0ld21wx" path="res://sprites/animation-frames/frame0001.png" id="11_r2bix"]
 [ext_resource type="Texture2D" uid="uid://0nmh5l5g3n7d" path="res://sprites/Halo1RightBack.png" id="12_f53lo"]
+[ext_resource type="Texture2D" uid="uid://c2vcv6nhxig01" path="res://sprites/animation-frames/frame0002.png" id="12_ujdco"]
+[ext_resource type="Texture2D" uid="uid://cknbjrqbb6ctx" path="res://sprites/animation-frames/frame0003.png" id="13_nvk63"]
 [ext_resource type="Texture2D" uid="uid://b1ddh7mrwbiht" path="res://sprites/Halo2RightBack.png" id="13_oy6yy"]
 [ext_resource type="Texture2D" uid="uid://dijjkeo6jrogv" path="res://sprites/HornRightBack.png" id="14_hcw26"]
+[ext_resource type="Texture2D" uid="uid://k1ox81xm5h5h" path="res://sprites/animation-frames/frame0004.png" id="14_i43c5"]
 [ext_resource type="Texture2D" uid="uid://y0hayihhj3db" path="res://sprites/HornRightMiddle.png" id="15_t5ua8"]
+[ext_resource type="Texture2D" uid="uid://mljjjq1oaem5" path="res://sprites/animation-frames/frame0005.png" id="15_u4kp4"]
+[ext_resource type="Texture2D" uid="uid://c68ppkt7tvrle" path="res://sprites/animation-frames/frame0006.png" id="16_6cnx4"]
 [ext_resource type="Texture2D" uid="uid://bg5sl1a3fvq6m" path="res://sprites/HornRightFront.png" id="16_306c2"]
 [ext_resource type="Texture2D" uid="uid://c5ctrmg2edqoq" path="res://sprites/Halo1RightFront.png" id="17_2oe8d"]
+[ext_resource type="Texture2D" uid="uid://gu7tnt3lqyfl" path="res://sprites/animation-frames/frame0007.png" id="17_hhf3d"]
+[ext_resource type="Texture2D" uid="uid://bxe5wejc0ndfy" path="res://sprites/animation-frames/frame0008.png" id="18_otlei"]
 [ext_resource type="Texture2D" uid="uid://d1t56cv6e3okj" path="res://sprites/Halo2RightFront.png" id="18_tvk2y"]
+[ext_resource type="Texture2D" uid="uid://dwdrwu4u4nvwx" path="res://sprites/animation-frames/frame0009.png" id="19_sao54"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_03n25"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_x184x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_r2bix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ujdco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_nvk63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_i43c5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_u4kp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6cnx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_hhf3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_otlei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_sao54")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="Node2D"]
-position = Vector2(748, 835)
+position = Vector2(752, 864)
 script = ExtResource("1_n2cwp")
 metadata/_edit_group_ = true
 
@@ -49,7 +97,11 @@ texture = ExtResource("7_26rf1")
 [node name="HornLeftMiddle" type="Sprite2D" parent="."]
 texture = ExtResource("8_l5ekm")
 
+[node name="HornLeftFrontAnimated" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_03n25")
+
 [node name="HornLeftFront" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("9_iy3ro")
 
 [node name="Halo1LeftFront" type="Sprite2D" parent="."]
@@ -71,6 +123,7 @@ texture = ExtResource("14_hcw26")
 texture = ExtResource("15_t5ua8")
 
 [node name="HornRightFront" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
 texture = ExtResource("16_306c2")
 
 [node name="Halo1RightFront" type="Sprite2D" parent="."]

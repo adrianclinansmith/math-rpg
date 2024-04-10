@@ -95,7 +95,9 @@ func __change_horns(side_of_head: String, value: int) -> void:
 	# show the horns to represent the remaining 1, 2, or 3
 	var back_horn: Sprite2D = get_node("Horn%sBack" % side_of_head)
 	var middle_horn: Sprite2D = get_node("Horn%sMiddle" % side_of_head)
-	var front_horn: Sprite2D = get_node("Horn%sFront" % side_of_head)
+	var front_horn = get_node("Horn%sFront" % side_of_head)
+	if side_of_head == "Left":
+		front_horn = get_node("Horn%sFrontAnimated" % side_of_head)
 	if value % 4 == 1:
 		middle_horn.show()
 	elif value % 4 == 2:
@@ -105,4 +107,7 @@ func __change_horns(side_of_head: String, value: int) -> void:
 		back_horn.show()
 		middle_horn.show()
 		front_horn.show()
+		if side_of_head == "Left":
+			print("should play")
+			front_horn.play("default")
 
