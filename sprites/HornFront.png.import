@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c68ppkt7tvrle"
-path="res://.godot/imported/frame0006.png-1f03c69ece30ffccc5176cbce611a15e.ctex"
+uid="uid://cb16mixii2tto"
+path="res://.godot/imported/HornFront.png-0f66dab0db79e7d0c4e39a89facd2bb7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/animation-frames/frame0006.png"
-dest_files=["res://.godot/imported/frame0006.png-1f03c69ece30ffccc5176cbce611a15e.ctex"]
+source_file="res://sprites/HornFront.png"
+dest_files=["res://.godot/imported/HornFront.png-0f66dab0db79e7d0c4e39a89facd2bb7.ctex"]
 
 [params]
 

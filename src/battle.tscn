@@ -14,6 +14,7 @@ bg_color = Color(0, 0, 0.803922, 1)
 script = ExtResource("1_0f3iq")
 
 [node name="Enemy" parent="." instance=ExtResource("2_1aitf")]
+position = Vector2(740, 874)
 
 [node name="AttackButton" type="Button" parent="."]
 offset_left = 27.0

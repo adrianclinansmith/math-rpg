@@ -3,7 +3,7 @@ extends Node2D
 
 enum LogicalOp {AND, OR, XOR}
 
-const ATTACK := 30
+const ATTACK := 3
 const __MAX_HP := 200
 
 var hp_bar: HpBar = null
@@ -79,7 +79,10 @@ func __change_horns(side_of_head: String, value: int) -> void:
 	# initially hide all horns and halos
 	for i in range(1, get_child_count()):
 		if get_child(i).name.contains(side_of_head):
-			get_child(i).hide()
+			if get_child(i).name.contains("Horn"):
+				(get_child(i) as AnimatedSprite2D).frame = 0
+			else:
+				get_child(i).hide()
 	# show the halos to represent 4, 8, or 12
 	var back_halo1: Sprite2D = get_node("Halo1%sBack" % side_of_head)
 	var front_halo1: Sprite2D = get_node("Halo1%sFront" % side_of_head)
@@ -93,21 +96,16 @@ func __change_horns(side_of_head: String, value: int) -> void:
 		back_halo1.show()
 		front_halo1.show()
 	# show the horns to represent the remaining 1, 2, or 3
-	var back_horn: Sprite2D = get_node("Horn%sBack" % side_of_head)
-	var middle_horn: Sprite2D = get_node("Horn%sMiddle" % side_of_head)
-	var front_horn = get_node("Horn%sFront" % side_of_head)
-	if side_of_head == "Left":
-		front_horn = get_node("Horn%sFrontAnimated" % side_of_head)
+	var back_horn: AnimatedSprite2D = get_node("Horn%sBack" % side_of_head)
+	var middle_horn: AnimatedSprite2D = get_node("Horn%sMiddle" % side_of_head)
+	var front_horn: AnimatedSprite2D = get_node("Horn%sFront" % side_of_head)
 	if value % 4 == 1:
-		middle_horn.show()
+		middle_horn.play("default")
 	elif value % 4 == 2:
-		back_horn.show()
-		middle_horn.show()
+		back_horn.play("default")
+		middle_horn.play("default")
 	elif value % 4 == 3:
-		back_horn.show()
-		middle_horn.show()
-		front_horn.show()
-		if side_of_head == "Left":
-			print("should play")
-			front_horn.play("default")
+		back_horn.play("default")
+		middle_horn.play("default")
+		front_horn.play("default")
 
