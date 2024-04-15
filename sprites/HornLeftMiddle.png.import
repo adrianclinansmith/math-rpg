@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xsqsfx1vgkcd"
-path="res://.godot/imported/HornMiddle.png-67a992805bb269d0a7562941c1b4f0e0.ctex"
+path="res://.godot/imported/HornLeftMiddle.png-033d39209c37bf91647c0dabf9ccb63e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/HornMiddle.png"
-dest_files=["res://.godot/imported/HornMiddle.png-67a992805bb269d0a7562941c1b4f0e0.ctex"]
+source_file="res://sprites/HornLeftMiddle.png"
+dest_files=["res://.godot/imported/HornLeftMiddle.png-033d39209c37bf91647c0dabf9ccb63e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb16mixii2tto"
-path="res://.godot/imported/HornFront.png-0f66dab0db79e7d0c4e39a89facd2bb7.ctex"
+uid="uid://dibvjn4c3uu27"
+path="res://.godot/imported/HaloXFront.png-c15b17a49bc5ffbb85ce02176c125ab1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/HornFront.png"
-dest_files=["res://.godot/imported/HornFront.png-0f66dab0db79e7d0c4e39a89facd2bb7.ctex"]
+source_file="res://sprites/HaloXFront.png"
+dest_files=["res://.godot/imported/HaloXFront.png-c15b17a49bc5ffbb85ce02176c125ab1.ctex"]
 
 [params]
 

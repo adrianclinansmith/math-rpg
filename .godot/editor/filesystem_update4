@@ -1,4 +1,6 @@
 res://src/enemy.tscn
+res://src/horn_set.tscn
+res://src/horn_set.gd
+res://src/enemy.gd
 res://src/battle.tscn
 res://src/hp_bar.tscn
-res://src/enemy.gd

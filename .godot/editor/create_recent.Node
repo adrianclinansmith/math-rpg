@@ -1,3 +1,5 @@
+HornSet
+Sprite2D
 AnimatedSprite2D
 PointLight2D
 Control
@@ -7,5 +9,4 @@ Panel
 Label
 HpBar
 ProgressBar
-Sprite2D
 Node2D

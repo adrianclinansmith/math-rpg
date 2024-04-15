@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfx60rimqg3sa"
-path="res://.godot/imported/Halo1LeftBack.png-e91e5a5fbac807966fae0bf42eda9be1.ctex"
+uid="uid://d02gvmtd44uh8"
+path="res://.godot/imported/HaloFlatFront.png-3a8cb0287743d26e5d9e69298970cdf5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Halo1LeftBack.png"
-dest_files=["res://.godot/imported/Halo1LeftBack.png-e91e5a5fbac807966fae0bf42eda9be1.ctex"]
+source_file="res://sprites/HaloFlatFront.png"
+dest_files=["res://.godot/imported/HaloFlatFront.png-3a8cb0287743d26e5d9e69298970cdf5.ctex"]
 
 [params]
 
