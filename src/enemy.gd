@@ -32,8 +32,8 @@ func change_logic_operator() -> void:
 		LogicalOp.XOR: $LogicalXOR.show()
 		
 func randomly_change_horns() -> void:
-	horn_set_left.change(__rng.randi_range(1, 15))
-	horn_set_right.change(__rng.randi_range(1, 15))
+	horn_set_left.shatter_and_regrow(__rng.randi_range(1, 15))
+	horn_set_right.shatter_and_regrow(__rng.randi_range(1, 15))
 	print()
 	
 func receive_attack(attack: int) -> bool:

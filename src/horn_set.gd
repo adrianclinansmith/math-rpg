@@ -7,7 +7,7 @@ extends Node2D
 @onready var halo_flat_back: AnimatedSprite2D = $HaloFlatBack
 @onready var horn_back: AnimatedSprite2D = $HornBack
 @onready var horn_middle: AnimatedSprite2D = $HornMiddle
-@onready var horn_front: AnimatedSprite2D = $HornFront
+@onready var horn_front: HornItem = $HornFront
 @onready var halo_x_front: AnimatedSprite2D = $HaloXFront
 @onready var halo_flat_front: AnimatedSprite2D = $HaloFlatFront
 
@@ -18,18 +18,28 @@ var value := 0
 
 func _ready():
 	print("ready horn: %s" % halo_flat_back)
+	halo_x_back.frame = 0
+	halo_flat_back.frame = 0
+	horn_back.frame = 0
+	horn_middle.frame = 0
+	#horn_front.frame = 0
+	halo_x_front.frame = 0
+	halo_flat_front.frame = 0
 	if flip_h:
 		halo_x_back.flip_h = true
 		halo_flat_back.flip_h = true
 		horn_back.flip_h = true
 		horn_middle.flip_h = true
-		horn_front.flip_h = true
+		#horn_front.flip_h = true
+		horn_front.flip = true
 		halo_x_front.flip_h = true
 		halo_flat_front.flip_h = true
 
 # Public Methods
 # ==============================================================================
-func change(value: int) -> void:
+
+func shatter_and_regrow(value: int) -> void:
+	print("%s = %d" % [name, value])
 	# Store the numeric value of the horns 
 	self.value = value
 	# initially hide all horns and halos
@@ -37,7 +47,8 @@ func change(value: int) -> void:
 	halo_flat_back.frame = 0
 	horn_back.frame = 0
 	horn_middle.frame = 0
-	horn_front.frame = 0
+	#horn_front.frame = 0
+	horn_front.shatter_if_out()
 	halo_x_front.frame = 0
 	halo_flat_front.frame = 0
 	# show the halos to represent 4, 8, or 12
@@ -57,4 +68,4 @@ func change(value: int) -> void:
 	elif value % 4 == 3:
 		horn_back.play("default")
 		horn_middle.play("default")
-		horn_front.play("default")
+		horn_front.play("grow")
