@@ -14,11 +14,17 @@ var flip: bool:
 
 var is_grown := false
 
+# Node Overrides
+# ==============================================================================
+
 func _ready() -> void:
 	grow_sprite.sprite_frames = grow_frames
 	grow_sprite.hide()
 	shatter_sprite.sprite_frames = shatter_frames
 	shatter_sprite.hide()
+
+# Public Methods
+# ==============================================================================
 
 func shatter_if_grown() -> void:
 	if is_grown:
@@ -26,12 +32,14 @@ func shatter_if_grown() -> void:
 		shatter_sprite.show()
 		shatter_sprite.play("default")
 		is_grown = false
-	
-	
+
 func grow_item() -> void:
 	grow_sprite.show()
 	grow_sprite.play("default")
 	is_grown = true
+
+# Signal Handlers
+# ==============================================================================
 
 func _on_shatter_animation_finished():
 	shatter_sprite.hide()
