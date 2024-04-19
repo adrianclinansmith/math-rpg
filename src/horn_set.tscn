@@ -163,7 +163,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 12.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h5401"]
@@ -319,7 +319,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 12.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5nuch"]
@@ -475,7 +475,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 12.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w0tkj"]
@@ -631,7 +631,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 12.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4px8f"]
@@ -787,7 +787,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 12.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_slkn6"]
@@ -943,7 +943,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 12.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xoy7p"]
@@ -1099,7 +1099,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 12.0
 }]
 
 [node name="HornSet" type="Node2D"]
@@ -1107,6 +1107,7 @@ script = ExtResource("1_gb0xi")
 metadata/_edit_group_ = true
 
 [node name="HaloFlatBack" parent="." instance=ExtResource("2_w2ycw")]
+position = Vector2(0, 1)
 grow_frames = SubResource("SpriteFrames_xouw5")
 shatter_frames = SubResource("SpriteFrames_wahqb")
 
@@ -1131,5 +1132,6 @@ grow_frames = SubResource("SpriteFrames_kwesp")
 shatter_frames = SubResource("SpriteFrames_bbhsa")
 
 [node name="HaloXFront" parent="." instance=ExtResource("2_w2ycw")]
+position = Vector2(0, -1)
 grow_frames = SubResource("SpriteFrames_v0rgt")
 shatter_frames = SubResource("SpriteFrames_nsjh0")
