@@ -1,33 +1,37 @@
 class_name HornItem
-extends AnimatedSprite2D
+extends Node2D
 
-@onready var shatter: AnimatedSprite2D = $Shatter
+@export var grow_frames: SpriteFrames
+@export var shatter_frames: SpriteFrames
 
-var flip := false:
-	set(boolean):
-		flip_h = boolean
-		shatter.flip_h = boolean
+@onready var grow_sprite: AnimatedSprite2D = $Grow
+@onready var shatter_sprite: AnimatedSprite2D = $Shatter
 
-# Node Overrides
-# ==============================================================================
+var flip: bool:
+	set(b):
+		grow_sprite.flip_h = b
+		shatter_sprite.flip_h = b
+
+var is_grown := false
 
 func _ready() -> void:
-	# initially hide the horn/halo
-	frame = 0
-	shatter.hide()
+	grow_sprite.sprite_frames = grow_frames
+	grow_sprite.hide()
+	shatter_sprite.sprite_frames = shatter_frames
+	shatter_sprite.hide()
 
-# Public Methods
-# ==============================================================================
-
-func shatter_if_out() -> void:
-	if frame != 0:
-		shatter.show()
-		shatter.play()
-		frame = 0
-
-# Signals
-# ==============================================================================
+func shatter_if_grown() -> void:
+	if is_grown:
+		grow_sprite.hide()
+		shatter_sprite.show()
+		shatter_sprite.play("default")
+		is_grown = false
+	
+	
+func grow_item() -> void:
+	grow_sprite.show()
+	grow_sprite.play("default")
+	is_grown = true
 
 func _on_shatter_animation_finished():
-	# cleanup the pieces once the animation is finished
-	shatter.hide()
+	shatter_sprite.hide()

@@ -1,8 +1,7 @@
-res://src/horn_set.tscn
-res://src/horn_set.gd
 res://src/battle.tscn
 res://src/enemy.tscn
 res://src/hp_bar.tscn
+res://src/horn_set.tscn
 res://src/horn_item.tscn
+res://src/horn_set.gd
 res://src/horn_item.gd
-res://src/enemy.gd
