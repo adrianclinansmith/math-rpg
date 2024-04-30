@@ -1,6 +1,7 @@
-HornItem
-Node2D
+TorusSet
 AnimatedSprite2D
+Node2D
+HornItem
 HornSet
 Sprite2D
 PointLight2D

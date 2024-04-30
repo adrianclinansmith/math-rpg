@@ -1,4 +1,4 @@
-[gd_scene load_steps=164 format=3 uid="uid://dd146oth7en2h"]
+[gd_scene load_steps=171 format=3 uid="uid://dd146oth7en2h"]
 
 [ext_resource type="Script" path="res://src/horn_set.gd" id="1_gb0xi"]
 [ext_resource type="PackedScene" uid="uid://cft857utgbacv" path="res://src/horn_item.tscn" id="2_w2ycw"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://chotidmfwin81" path="res://sprites/HornFront.png" id="7_bk3a4"]
 [ext_resource type="Texture2D" uid="uid://d02gvmtd44uh8" path="res://sprites/HaloFlatFront.png" id="7_uhnkt"]
 [ext_resource type="Texture2D" uid="uid://dibvjn4c3uu27" path="res://sprites/HaloXFront.png" id="9_5ys2l"]
+[ext_resource type="PackedScene" uid="uid://d0riftvdmf56t" path="res://src/torus_set.tscn" id="10_e5qut"]
+[ext_resource type="Texture2D" uid="uid://bvntm6v8of1mr" path="res://sprites/TorusFront.png" id="11_wa2ao"]
+[ext_resource type="Texture2D" uid="uid://bq0iifkvv4rqn" path="res://sprites/TorusBack.png" id="12_yq8i8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qiph5"]
 atlas = ExtResource("3_ocpvc")
@@ -1102,6 +1105,36 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvwku"]
+atlas = ExtResource("11_wa2ao")
+region = Rect2(0, 0, 1489, 1899)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gf1pk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvwku")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21s10"]
+atlas = ExtResource("12_yq8i8")
+region = Rect2(0, 0, 1489, 1899)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cdtub"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21s10")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="HornSet" type="Node2D"]
 script = ExtResource("1_gb0xi")
 metadata/_edit_group_ = true
@@ -1135,3 +1168,7 @@ shatter_frames = SubResource("SpriteFrames_bbhsa")
 position = Vector2(0, -1)
 grow_frames = SubResource("SpriteFrames_v0rgt")
 shatter_frames = SubResource("SpriteFrames_nsjh0")
+
+[node name="TorusSet" parent="." instance=ExtResource("10_e5qut")]
+front = SubResource("SpriteFrames_gf1pk")
+back = SubResource("SpriteFrames_cdtub")

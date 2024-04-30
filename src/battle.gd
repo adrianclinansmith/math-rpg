@@ -52,6 +52,11 @@ func _on_attack_button_pressed() -> void:
 	$AttackButton.text = str(attack)
 	if enemy_is_defeated:
 		display_end_game(true)
+
+func _on_end_game_ok_pressed():
+	hp = MAX_HP
+	enemy.reset()
+	end_game_display.hide()
 	
 # Private Helper Functions 
 # =========================================================
@@ -69,8 +74,3 @@ func display_end_game(player_won: bool) -> void:
 	else:
 		end_game_display.get_node("Label").text = "You're dead"
 	end_game_display.show()
-
-func _on_end_game_ok_pressed():
-	hp = MAX_HP
-	enemy.reset()
-	end_game_display.hide()
